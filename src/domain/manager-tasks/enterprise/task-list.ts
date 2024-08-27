@@ -31,6 +31,13 @@ export class TaskList extends AggregateRoot<TaskListProps> {
     this.props.tasks.push(task)
   }
 
+  removeTask(taskId: string) {
+    const taskIndex = this.props.tasks.findIndex(
+      (task) => task.id.toString() === taskId,
+    )
+    this.props.tasks.splice(taskIndex, 1)
+  }
+
   updateTask(taskUpdate: Task): void {
     const indexOfTask = this.tasks.findIndex((task) =>
       task.id.equals(taskUpdate.id),

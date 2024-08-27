@@ -1,4 +1,4 @@
-import type { TaskList } from '../enterprise/task-list'
+import type { TaskList } from '../../enterprise/task-list'
 
 export abstract class TasksListRepository {
   abstract findTaskListByAuthor(auhtorId: string): Promise<TaskList | undefined>

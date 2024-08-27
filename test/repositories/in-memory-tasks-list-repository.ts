@@ -1,5 +1,5 @@
+import type { TasksListRepository } from '@/domain/manager-tasks/application/repositories/tasks-list-repositories'
 import type { TaskList } from '@/domain/manager-tasks/enterprise/task-list'
-import type { TasksListRepository } from '@/domain/manager-tasks/repositories/tasks-list-repositories'
 
 export class InMemoryTasksListRepository implements TasksListRepository {
   public items: TaskList[] = []
