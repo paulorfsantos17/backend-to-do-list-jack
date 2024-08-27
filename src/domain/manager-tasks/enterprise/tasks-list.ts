@@ -1,7 +1,7 @@
 import { AggregateRoot } from 'src/core/entities/aggregate-root'
 import type { UniqueEntityId } from 'src/core/entities/unique-entity-id'
 
-import type { Task } from '../../auth/enterprise/task'
+import type { Task } from './task'
 
 interface TasksListProps {
   author_id: UniqueEntityId
