@@ -1,7 +1,7 @@
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
-import { Task } from '../enterprise/task'
-import { TaskList } from '../enterprise/task-list'
+import { Task } from '../../enterprise/task'
+import { TaskList } from '../../enterprise/task-list'
 import type { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface CreateTaskUseCaseProps {

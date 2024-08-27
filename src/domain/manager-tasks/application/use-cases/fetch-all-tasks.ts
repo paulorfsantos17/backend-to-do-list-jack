@@ -1,4 +1,4 @@
-import type { Task } from '../enterprise/task'
+import type { Task } from '../../enterprise/task'
 import type { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface FetchAllTasksUseCaseRequest {

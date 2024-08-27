@@ -3,7 +3,7 @@ import { InMemoryTasksListRepository } from 'test/repositories/in-memory-tasks-l
 
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
-import { TaskList } from '../enterprise/task-list'
+import { TaskList } from '../../enterprise/task-list'
 import { FetchAllTasksUseCase } from './fetch-all-tasks'
 
 let sut: FetchAllTasksUseCase
