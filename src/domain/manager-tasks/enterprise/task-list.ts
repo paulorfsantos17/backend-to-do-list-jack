@@ -3,7 +3,7 @@ import type { UniqueEntityId } from 'src/core/entities/unique-entity-id'
 
 import type { Task } from './task'
 
-interface TaskListProps {
+export interface TaskListProps {
   authorId: UniqueEntityId
   tasks: Task[]
   createdAt: Date
@@ -29,6 +29,14 @@ export class TaskList extends AggregateRoot<TaskListProps> {
 
   addTask(task: Task): void {
     this.props.tasks.push(task)
+  }
+
+  updateTask(taskUpdate: Task): void {
+    const indexOfTask = this.tasks.findIndex((task) =>
+      task.id.equals(taskUpdate.id),
+    )
+
+    this.tasks[indexOfTask] = taskUpdate
   }
 
   static create(props: TaskListProps, id?: UniqueEntityId) {

@@ -30,6 +30,20 @@ export class Task extends Entity<TaskProps> {
     return this.props.updatedAt
   }
 
+  set title(title: string) {
+    this.props.title = title
+    this.touch()
+  }
+
+  set description(description: string) {
+    this.props.description = description
+    this.touch()
+  }
+
+  touch() {
+    this.props.updatedAt = new Date()
+  }
+
   static create(props: TaskProps, id?: UniqueEntityId) {
     const task = new Task({ ...props }, id)
     return task

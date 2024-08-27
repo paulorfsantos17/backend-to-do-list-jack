@@ -29,7 +29,6 @@ describe('Fetch All Tasks', () => {
       description: 'Task 1 description',
     })
     const task2 = makeTask()
-
     taskList.addTask(task1)
     taskList.addTask(task2)
 
