@@ -1,7 +1,7 @@
 import { Entity } from 'src/core/entities/entity'
 import type { UniqueEntityId } from 'src/core/entities/unique-entity-id'
 
-interface TaskProps {
+export interface TaskProps {
   title: string
   description: string
   completionDate?: Date | null
