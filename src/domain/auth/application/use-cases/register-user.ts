@@ -1,6 +1,7 @@
 import { User } from '../../enterprise/user'
 import type { HashGenerator } from '../cryptography/hash-generator'
 import type { UsersRepository } from '../repositories/users-repository'
+import { UserAlreadyExistsError } from './erros/user-already-exists-error'
 
 interface RegisterUserUseCaseRequest {
   name: string
@@ -22,7 +23,7 @@ export class RegisterUserUseCase {
     const userWithSameEmail = await this.usersRepository.findByEmail(email)
 
     if (userWithSameEmail) {
-      throw new Error('User already exists')
+      throw new UserAlreadyExistsError(email)
     }
 
     const hashedPassword = await this.hashGenerator.hash(password)

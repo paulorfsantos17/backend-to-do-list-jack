@@ -41,7 +41,9 @@ describe('create an user', () => {
         email: 'johndoe@example.com',
         password: 'password',
       }),
-    ).rejects.toThrowError('User already exists')
+    ).rejects.toThrowError(
+      'User with email "johndoe@example.com" already exists',
+    )
     expect(inMemoryUserRepository.items.length).toEqual(1)
   })
 
