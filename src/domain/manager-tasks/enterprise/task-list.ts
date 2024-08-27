@@ -38,6 +38,11 @@ export class TaskList extends AggregateRoot<TaskListProps> {
     this.props.tasks.splice(taskIndex, 1)
   }
 
+  completedTask(taskId: string) {
+    const task = this.tasks.find((task) => task.id.toString() === taskId)
+    task.completedTask()
+  }
+
   updateTask(taskUpdate: Task): void {
     const indexOfTask = this.tasks.findIndex((task) =>
       task.id.equals(taskUpdate.id),
