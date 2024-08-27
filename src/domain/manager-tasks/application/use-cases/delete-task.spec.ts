@@ -31,7 +31,7 @@ describe('Delete an task', () => {
     expect(inMemoryTasksListRepository.items[0].tasks.length).toEqual(0)
   })
 
-  it('not should be able update an task when TaskList not exist', async () => {
+  it('not should be able delete an task when TaskList not exist', async () => {
     expect(
       sut.execute({
         authorId: 'user-id',
@@ -39,7 +39,7 @@ describe('Delete an task', () => {
       }),
     ).rejects.toThrowError(new ResourceNotFoundError())
   })
-  it('not should be able update an task when Task not exist', async () => {
+  it('not should be able delete an task when Task not exist', async () => {
     inMemoryTasksListRepository.items.push(
       makeTaskList({
         authorId: new UniqueEntityId('user-id'),
