@@ -12,6 +12,7 @@ import { z } from 'zod'
 
 import { UserAlreadyExistsError } from '@/domain/auth/application/use-cases/erros/user-already-exists-error'
 import { RegisterUserUseCase } from '@/domain/auth/application/use-cases/register-user'
+import { Public } from '@/infra/auth/public'
 
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 
@@ -28,6 +29,7 @@ export class RegisterUserController {
   constructor(private registerUser: RegisterUserUseCase) {}
   @Post()
   @HttpCode(HttpStatus.CREATED)
+  @Public()
   @UsePipes(new ZodValidationPipe(registerUserBodySchema))
   async handle(@Body() body: RegisterUserBodySchema) {
     const { name, email, password } = body
