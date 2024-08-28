@@ -5,10 +5,10 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   test: {
     include: ['./src/**/*.e2e-spec.ts'],
-    exclude: ['./data/*'],
+    exclude: ['./data/*', './dist'],
     globals: true,
     root: './',
-    setupFiles: ['./test/setup-e2e.mts'],
+    setupFiles: ['./test/setup-e2e.ts'],
   },
   plugins: [
     tsConfigPaths(),

@@ -7,7 +7,7 @@ export default defineConfig({
     globals: true,
     root: './',
     include: ['./src/**/*.spec.ts'],
-    exclude: ['./data/*'],
+    exclude: ['./data/*', './dist'],
   },
   plugins: [
     tsConfigPaths(),
