@@ -24,7 +24,8 @@ function generateUniqueDatabaseURL(schemaId: string) {
     throw new Error('DATABASE_URL environment variable is required')
   }
   const url = new URL(env.DATABASE_URL)
-  url.searchParams.set('schema', schemaId)
+
+  url.pathname = `/${schemaId}`
 
   return url.toString()
 }
@@ -39,9 +40,7 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  await prisma.$executeRawUnsafe(
-    `DROP SCHEMA IF EXISTS "${DatabaseUUID}" CASCADE`,
-  )
+  await prisma.$executeRawUnsafe(`DROP DATABASE IF EXISTS \`${DatabaseUUID}\`;`)
 
   await prisma.$disconnect()
 })
