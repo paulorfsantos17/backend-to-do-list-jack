@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common'
 
-import { AppService } from './app.service'
+import { HttpModule } from './infra/http/http.module'
 
 @Module({
-  imports: [],
-  providers: [AppService],
+  imports: [HttpModule],
 })
 export class AppModule {}
