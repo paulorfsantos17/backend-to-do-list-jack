@@ -1,6 +1,8 @@
+import { Injectable } from '@nestjs/common'
+
 import { User } from '../../enterprise/user'
-import type { HashGenerator } from '../cryptography/hash-generator'
-import type { UsersRepository } from '../repositories/users-repository'
+import { HashGenerator } from '../cryptography/hash-generator'
+import { UsersRepository } from '../repositories/users-repository'
 import { UserAlreadyExistsError } from './erros/user-already-exists-error'
 
 interface RegisterUserUseCaseRequest {
@@ -9,6 +11,7 @@ interface RegisterUserUseCaseRequest {
   password: string
 }
 
+@Injectable()
 export class RegisterUserUseCase {
   constructor(
     private usersRepository: UsersRepository,
