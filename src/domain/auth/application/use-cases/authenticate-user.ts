@@ -1,3 +1,5 @@
+import { Injectable } from '@nestjs/common'
+
 import { Encrypter } from '../cryptography/encrypter'
 import { HashComparer } from '../cryptography/hash-comparer'
 import { UsersRepository } from '../repositories/users-repository'
@@ -11,6 +13,7 @@ interface AuthenticatedUserUseCaseResponse {
   accessToken: string
 }
 
+@Injectable()
 export class AuthenticatedUserUseCase {
   constructor(
     private usersRepository: UsersRepository,
