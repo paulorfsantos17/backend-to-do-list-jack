@@ -1,0 +1,11 @@
+version: "2.29.2"
+
+services: 
+  mysql:
+    container_name: to-do-list-jack
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: to_do_list_jack
