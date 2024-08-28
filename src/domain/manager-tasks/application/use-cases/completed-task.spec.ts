@@ -27,7 +27,6 @@ describe('Completed an task', () => {
       authorId: 'user-id',
       taskId: 'task-id',
     })
-    console.log(inMemoryTasksListRepository.items[0].tasks[0])
 
     expect(
       inMemoryTasksListRepository.items[0].tasks[0].completionDate,
