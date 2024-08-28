@@ -3,14 +3,14 @@ import { Injectable } from '@nestjs/common'
 import { UsersRepository } from '@/domain/auth/application/repositories/users-repository'
 import { User } from '@/domain/auth/enterprise/user'
 
-import { PrismaStudentMapper } from '../mappers/prisma-user-mapper'
+import { PrismaUserMapper } from '../mappers/prisma-user-mapper'
 import { PrismaService } from '../prisma.service'
 
 @Injectable()
 export class PrismaUsersRepository implements UsersRepository {
   constructor(private prisma: PrismaService) {}
   async create(user: User): Promise<void> {
-    const data = PrismaStudentMapper.toPrisma(user)
+    const data = PrismaUserMapper.toPrisma(user)
     await this.prisma.user.create({
       data,
     })
@@ -25,6 +25,6 @@ export class PrismaUsersRepository implements UsersRepository {
       return null
     }
 
-    return PrismaStudentMapper.toDomain(user)
+    return PrismaUserMapper.toDomain(user)
   }
 }

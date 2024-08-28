@@ -3,7 +3,7 @@ import type { TaskList } from '@/domain/manager-tasks/enterprise/task-list'
 
 export class InMemoryTasksListRepository implements TasksListRepository {
   public items: TaskList[] = []
-  async findTaskListByAuthor(authorId: string): Promise<TaskList | undefined> {
+  async findTaskListByAuthor(authorId: string): Promise<TaskList | null> {
     const taskList = this.items.find(
       (taskList) => taskList.authorId.toString() === authorId,
     )

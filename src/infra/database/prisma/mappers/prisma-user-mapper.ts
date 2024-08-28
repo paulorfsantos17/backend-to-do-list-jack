@@ -3,7 +3,7 @@ import { Prisma, User as PrismaUser } from '@prisma/client'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { User } from '@/domain/auth/enterprise/user'
 
-export class PrismaStudentMapper {
+export class PrismaUserMapper {
   static toDomain(raw: PrismaUser): User {
     return User.create(
       {

@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common'
+
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
 import { Task } from '../../enterprise/task'
 import { TaskList } from '../../enterprise/task-list'
-import type { TasksListRepository } from '../repositories/tasks-list-repositories'
+import { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface CreateTaskUseCaseProps {
   authorId: string
@@ -10,6 +12,7 @@ interface CreateTaskUseCaseProps {
   description: string
 }
 
+@Injectable()
 export class CreateTaskUseCase {
   constructor(private tasksListRepository: TasksListRepository) {}
 
