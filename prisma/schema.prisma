@@ -29,7 +29,7 @@ model Task {
   description    String
   completionDate DateTime? @map("completion_date")
   createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
+  updatedAt      DateTime? @updatedAt @map("updated_at")
   taskList       TaskList  @relation(fields: [taskListId], references: [id])
   taskListId     String    @map("task_list_id")
 
@@ -37,12 +37,12 @@ model Task {
 }
 
 model TaskList {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
   tasks     Task[]
-  User      User     @relation(fields: [userId], references: [id])
-  userId    String   @map("user_id")
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    String    @map("user_id")
 
   @@map("task_lists")
 }

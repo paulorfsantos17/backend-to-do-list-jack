@@ -13,7 +13,7 @@ export class InMemoryTasksListRepository implements TasksListRepository {
     return taskList
   }
 
-  async save(taskList: TaskList): Promise<void> {
+  async create(taskList: TaskList): Promise<void> {
     this.items.push(taskList)
   }
 

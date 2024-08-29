@@ -18,25 +18,48 @@ export class PrismaTaskListMapper {
         authorId: new UniqueEntityId(raw.userId),
         createdAt: new Date(raw.createdAt),
         updatedAt: raw.updatedAt ? new Date(raw.updatedAt) : null,
-        tasks: raw.tasks.map((task) => Task.create(task)),
+        tasks: raw.tasks.map((task) =>
+          Task.create(task, new UniqueEntityId(task.id)),
+        ),
       },
       new UniqueEntityId(raw.id),
     )
   }
 
-  static toPrisma(taskList: TaskList): Prisma.TaskListUncheckedCreateInput {
+  static toPrismaCreate(
+    taskList: TaskList,
+  ): Prisma.TaskListUncheckedCreateInput {
     return {
+      id: taskList.id.toString(),
       userId: taskList.authorId.toString(),
       createdAt: taskList.createdAt,
       updatedAt: taskList.updatedAt,
+    }
+  }
+
+  static toPrismaUpdate(taskList: TaskList): Prisma.TaskListUpdateInput {
+    return {
+      id: taskList.id.toString(),
+      createdAt: taskList.createdAt,
+      updatedAt: taskList.updatedAt,
       tasks: {
-        createMany: {
-          data: taskList.tasks.map((task) => ({
+        upsert: taskList.tasks.map((task) => ({
+          where: { id: task.id.toString() },
+          update: {
             title: task.title,
             description: task.description,
             completionDate: task.completionDate,
-          })),
-        },
+            updatedAt: task.updatedAt || new Date(),
+          },
+          create: {
+            id: task.id.toString(),
+            title: task.title,
+            description: task.description,
+            completionDate: task.completionDate,
+            createdAt: task.createdAt || new Date(),
+            updatedAt: task.updatedAt || null,
+          },
+        })),
       },
     }
   }

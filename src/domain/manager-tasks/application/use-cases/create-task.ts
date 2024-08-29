@@ -29,7 +29,7 @@ export class CreateTaskUseCase {
         tasks: [],
         createdAt: new Date(),
       })
-      await this.tasksListRepository.save(taskList)
+      await this.tasksListRepository.create(taskList)
     }
 
     const task = Task.create({

@@ -23,21 +23,20 @@ export class PrismaTasksListRepository implements TasksListRepository {
     return PrismaTaskListMapper.toDomain(data)
   }
 
-  async save(taskList: TaskList): Promise<void> {
-    const data = PrismaTaskListMapper.toPrisma(taskList)
-    await this.prisma.taskList.upsert({
-      create: data,
-      update: data,
-      where: { id: taskList.id.toString() },
+  async create(taskList: TaskList): Promise<void> {
+    const data = PrismaTaskListMapper.toPrismaCreate(taskList)
+
+    await this.prisma.taskList.create({
+      data,
     })
   }
 
   async update(taskList: TaskList): Promise<void> {
-    const data = PrismaTaskListMapper.toPrisma(taskList)
-    await this.prisma.taskList.upsert({
-      create: data,
-      update: data,
+    const data = PrismaTaskListMapper.toPrismaUpdate(taskList)
+
+    await this.prisma.taskList.update({
       where: { id: taskList.id.toString() },
+      data,
     })
   }
 }

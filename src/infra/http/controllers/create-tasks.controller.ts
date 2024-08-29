@@ -35,15 +35,15 @@ export class CreateTaskController {
     const { title, description } = body
     const userId = user.sub
 
-    // try {
-    await this.createQuestion.execute({
-      authorId: userId,
-      description,
-      title,
-    })
-    // } catch (error) {
-    //   console.error(error)
-    //   throw new BadRequestException(error.message)
-    // }
+    try {
+      await this.createQuestion.execute({
+        authorId: userId,
+        description,
+        title,
+      })
+    } catch (error) {
+      console.error(error)
+      throw new BadRequestException(error.message)
+    }
   }
 }

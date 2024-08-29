@@ -56,5 +56,22 @@ describe('Create Task(e2e)', () => {
 
     expect(TaskListOnDatabase).toBeTruthy()
     expect(taskOnDatabase).toBeTruthy()
+
+    await request(app.getHttpServer())
+      .post('/task')
+      .set('Authorization', `Bearer ${accessToken}`)
+      .send({
+        title: 'Task title.',
+        description: 'Task content.',
+      })
+
+    const TaskListIncludesTasksOnDatabase = await prisma.taskList.findFirst({
+      where: { userId: user.id },
+      include: {
+        tasks: true,
+      },
+    })
+
+    expect(TaskListIncludesTasksOnDatabase.tasks.length).toBe(2)
   })
 })
