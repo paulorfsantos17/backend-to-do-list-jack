@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 
 import { AuthenticatedUserUseCase } from '@/domain/auth/application/use-cases/authenticate-user'
 import { RegisterUserUseCase } from '@/domain/auth/application/use-cases/register-user'
+import { CompletedTaskUseCase } from '@/domain/manager-tasks/application/use-cases/completed-task'
 import { CreateTaskUseCase } from '@/domain/manager-tasks/application/use-cases/create-task'
 import { DeleteTaskUseCase } from '@/domain/manager-tasks/application/use-cases/delete-task'
 import { FetchAllTasksUseCase } from '@/domain/manager-tasks/application/use-cases/fetch-all-tasks'
@@ -10,6 +11,7 @@ import { UpdateTaskUseCase } from '@/domain/manager-tasks/application/use-cases/
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
 import { AuthenticateController } from './controllers/authenticate.controller'
+import { CompletedTaskController } from './controllers/completed-task.controller'
 import { CreateTaskController } from './controllers/create-tasks.controller'
 import { DeleteTaskController } from './controllers/delete-task.controller'
 import { FetchAllTasksController } from './controllers/fetch-all-tasks.controller'
@@ -25,6 +27,7 @@ import { UpdateTaskController } from './controllers/update-task.controller'
     FetchAllTasksController,
     UpdateTaskController,
     DeleteTaskController,
+    CompletedTaskController,
   ],
   providers: [
     RegisterUserUseCase,
@@ -33,6 +36,7 @@ import { UpdateTaskController } from './controllers/update-task.controller'
     FetchAllTasksUseCase,
     UpdateTaskUseCase,
     DeleteTaskUseCase,
+    CompletedTaskUseCase,
   ],
 })
 export class HttpModule {}
