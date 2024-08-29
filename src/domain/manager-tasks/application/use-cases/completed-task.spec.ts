@@ -5,15 +5,15 @@ import { InMemoryTasksListRepository } from 'test/repositories/in-memory-tasks-l
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { ResourceNotFoundError } from '@/core/errors/resource-not-found-error'
 
-import { DeleteTaskUseCase } from './completed-task'
+import { CompletedTaskUseCase } from './completed-task'
 
-let sut: DeleteTaskUseCase
+let sut: CompletedTaskUseCase
 let inMemoryTasksListRepository: InMemoryTasksListRepository
 
 describe('Completed an task', () => {
   beforeEach(() => {
     inMemoryTasksListRepository = new InMemoryTasksListRepository()
-    sut = new DeleteTaskUseCase(inMemoryTasksListRepository)
+    sut = new CompletedTaskUseCase(inMemoryTasksListRepository)
   })
   it('should completed a task', async () => {
     inMemoryTasksListRepository.items.push(

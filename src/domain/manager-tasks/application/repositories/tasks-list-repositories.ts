@@ -6,4 +6,6 @@ export abstract class TasksListRepository {
   abstract create(taskList: TaskList): Promise<void>
 
   abstract update(taskList: TaskList): Promise<void>
+
+  abstract deleteTask(taskId: string): Promise<void>
 }

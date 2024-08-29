@@ -26,4 +26,10 @@ export class InMemoryTasksListRepository implements TasksListRepository {
 
     this.items[index] = taskList
   }
+
+  async deleteTask(taskId: string): Promise<void> {
+    this.items.forEach((tasklist) => {
+      tasklist.removeTask(taskId)
+    })
+  }
 }

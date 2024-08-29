@@ -1,12 +1,15 @@
+import { Injectable } from '@nestjs/common'
+
 import { ResourceNotFoundError } from '@/core/errors/resource-not-found-error'
 
-import type { TasksListRepository } from '../repositories/tasks-list-repositories'
+import { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface DeleteTaskUseCaseProps {
   authorId: string
   taskId: string
 }
 
+@Injectable()
 export class DeleteTaskUseCase {
   constructor(private tasksListRepository: TasksListRepository) {}
 
@@ -25,6 +28,7 @@ export class DeleteTaskUseCase {
     }
 
     taskList.removeTask(taskId)
-    await this.tasksListRepository.update(taskList)
+
+    await this.tasksListRepository.deleteTask(taskId)
   }
 }

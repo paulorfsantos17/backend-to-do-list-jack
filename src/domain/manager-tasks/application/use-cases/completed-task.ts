@@ -1,13 +1,16 @@
+import { Injectable } from '@nestjs/common'
+
 import { ResourceNotFoundError } from '@/core/errors/resource-not-found-error'
 
-import type { TasksListRepository } from '../repositories/tasks-list-repositories'
+import { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface DeleteTaskUseCaseProps {
   authorId: string
   taskId: string
 }
 
-export class DeleteTaskUseCase {
+@Injectable()
+export class CompletedTaskUseCase {
   constructor(private tasksListRepository: TasksListRepository) {}
 
   async execute({ authorId, taskId }: DeleteTaskUseCaseProps): Promise<void> {
