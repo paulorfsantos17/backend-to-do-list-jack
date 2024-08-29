@@ -1,5 +1,7 @@
-import type { Task } from '../../enterprise/task'
-import type { TasksListRepository } from '../repositories/tasks-list-repositories'
+import { Injectable } from '@nestjs/common'
+
+import { Task } from '../../enterprise/task'
+import { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface FetchAllTasksUseCaseRequest {
   authorId: string
@@ -8,6 +10,7 @@ interface FetchAllTasksUseCaseResponse {
   tasks: Task[]
 }
 
+@Injectable()
 export class FetchAllTasksUseCase {
   constructor(private tasksListRepository: TasksListRepository) {}
 
