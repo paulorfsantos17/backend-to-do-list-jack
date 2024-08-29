@@ -57,23 +57,22 @@ describe('Fetch All Tasks (e2e)', () => {
     })
 
     const response = await request(app.getHttpServer())
-      .get(`/tasks`)
+      .put(`/tasks/${taskOne.id.toString()}`)
       .set('Authorization', `Bearer ${accessToken}`)
-      .send()
+      .send({
+        title: 'Task 1 updated',
+        description: 'Task 1 updated description',
+      })
 
     expect(response.status).toBe(200)
-    expect(response.body.tasks).toHaveLength(2)
-    expect(response.body).toEqual({
-      tasks: expect.arrayContaining([
-        expect.objectContaining({
-          title: 'Task 1',
-          description: 'Task 1 description',
-        }),
-        expect.objectContaining({
-          title: 'Task 2',
-          description: 'Task 2 description',
-        }),
-      ]),
+
+    const taskOnDatabase = await prisma.task.findFirstOrThrow({
+      where: {
+        id: taskOne.id.toString(),
+      },
     })
+
+    expect(taskOnDatabase.title).toBe('Task 1 updated')
+    expect(taskOnDatabase.description).toBe('Task 1 updated description')
   })
 })

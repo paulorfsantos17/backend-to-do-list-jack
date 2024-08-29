@@ -1,6 +1,8 @@
+import { Injectable } from '@nestjs/common'
+
 import { ResourceNotFoundError } from '@/core/errors/resource-not-found-error'
 
-import type { TasksListRepository } from '../repositories/tasks-list-repositories'
+import { TasksListRepository } from '../repositories/tasks-list-repositories'
 
 interface UpdateTaskUseCaseProps {
   authorId: string
@@ -9,6 +11,7 @@ interface UpdateTaskUseCaseProps {
   description: string
 }
 
+@Injectable()
 export class UpdateTaskUseCase {
   constructor(private tasksListRepository: TasksListRepository) {}
 

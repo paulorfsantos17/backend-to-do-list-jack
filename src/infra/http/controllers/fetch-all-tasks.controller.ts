@@ -4,7 +4,7 @@ import { FetchAllTasksUseCase } from '@/domain/manager-tasks/application/use-cas
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 
-import { TaskPresenter } from './presenters/task-presenter'
+import { TaskPresenter } from '../presenters/task-presenter'
 
 @Controller('/tasks')
 export class FetchAllTasksController {
