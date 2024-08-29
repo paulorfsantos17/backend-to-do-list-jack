@@ -10,7 +10,7 @@ import { AppModule } from '@/app.module'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
 
-describe('Fetch All Tasks (e2e)', () => {
+describe('Update Tasks (e2e)', () => {
   let app: INestApplication
   let prisma: PrismaService
   let jwt: JwtService
@@ -29,7 +29,7 @@ describe('Fetch All Tasks (e2e)', () => {
 
     await app.init()
   })
-  test('[GET] /tasks', async () => {
+  test('[Put] /tasks:id', async () => {
     const user = await prisma.user.create({
       data: {
         name: 'John Doe',
