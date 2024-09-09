@@ -1,85 +1,121 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Backend - TO-DO-LIST (JACK)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto backend faz parte da aplicação **TO-DO-LIST JACK** e foi construído utilizando o framework **NestJS**. O backend inclui autenticação JWT, integração com o banco de dados via Prisma ORM, validação de dados com Zod, além de testes unitários e end-to-end com Vitest.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Tecnologias Utilizadas
 
-## Description
+### Frameworks e Ferramentas Principais
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **[NestJS](https://nestjs.com/):** Framework Node.js para a construção de aplicações escaláveis e eficientes, usando TypeScript por padrão.
+- **[Prisma](https://www.prisma.io/):** ORM para facilitar o mapeamento de dados entre o banco de dados e a aplicação.
+- **[Vitest](https://vitest.dev/):** Ferramenta rápida para execução de testes unitários e de cobertura.
+- **[Zod](https://github.com/colinhacks/zod):** Biblioteca de validação de esquemas em TypeScript, usada para validação e tipagem dos dados.
+- **[bcryptjs](https://www.npmjs.com/package/bcryptjs):** Biblioteca de hashing utilizada para criptografar senhas.
+- **[Passport](https://www.passportjs.org/):** Middleware para autenticação no Node.js, utilizado com a estratégia JWT.
 
-## Project setup
+## Como rodar o Front-end
+ 
+  1. Clone o repositório:
+   ```
+    git clone https://github.com/paulorfsantos17/backend-to-do-list-jack.git
+  ```
+  2. Navegue até o diretório do projeto:
+  ```
+    cd backend-to-do-list-jack
+  ``` 
 
-```bash
-$ pnpm install
-```
+  3. instale as dependências
+  ```
+    pnpm install
+  ```
 
-## Compile and run the project
+  4. Antes de rodar a aplicação, configure as variáveis de ambiente do .env usando o .env.example como referência.
 
-```bash
-# development
-$ pnpm run start
+  5. Crie um banco de dados no docker usando o arquivo docker-compose.yml usando o comando:
+  ```
+    docker compose up -d 
+   ``` 
 
-# watch mode
-$ pnpm run start:dev
+   6. Gere as tabelas do banco de dados usando o comando do prisma: 
+   ```
+    pnpm prisma migrate dev 
+   ``` 
 
-# production mode
-$ pnpm run start:prod
-```
 
-## Run tests
+  7. Inicie o servidor de desenvolvimento:
+  ```
+    pnpm star:dev
+  ```
 
-```bash
-# unit tests
-$ pnpm run test
+  ## Explicação dos Scripts
 
-# e2e tests
-$ pnpm run test:e2e
+  - **`start`:** Inicia o servidor em modo de produção.
+  ```
+    pnpm start
+  ```
 
-# test coverage
-$ pnpm run test:cov
-```
+  - **`start:dev`:** Inicia o servidor em modo de desenvolvimento, com modo watch.
+  ```
+    pnpm start:dev
+  ```
 
-## Resources
 
-Check out a few resources that may come in handy when working with NestJS:
+  - **`start:debug`:** Inicia o servidor em modo de debug
+  ```
+    pnpm start:debug
+  ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+  - **`start:prod`:** Inicia o servidor diretamente a partir dos arquivos compilados na pasta dist.
+  ```
+   pnpm start:prod
+  ```
+  - **`lint`:** Executa o ESLint para encontrar e corrigir problemas no código.
+  ```
+    pnpm lint
+  ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+  ## Teste unitários como usar: 
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  Para executar os testes unitários, utilize os seguintes scripts:
 
-## License
+   - **`test`:** Executa os testes unitários com Vitest.
+  ```
+   pnpm test
+  ```
+  - **`test:watch`:**Executa os testes unitários em modo de observação, para que sejam reexecutados a cada alteração no código.
+  ```
+   pnpm test:watch
+  ```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+  - **`test:cov`:** Executa os testes em modo de debug.
+  ```
+   pnpm test
+  ```
+  
+  - **`test:debug`:** Executa os testes unitários e gera um relatório de cobertura de código.
+  ```
+   pnpm test:debug
+  ```
+
+
+  ## Test (e2e)
+
+  Rodando teste unitário
+  - **`test:e2e`:**  Executa os testes end-to-end usando a configuração do vitest.config.e2e.mts.
+   ```
+    pnpm test:e2e
+   ```
+  
+  - **`test:e2e:watch`:** 
+  ```
+   pnpm test:e2e:watch
+  ```
+.
+
+
+  ## Notas
+  - Variáveis de Ambiente: Certifique-se de criar o arquivo .env com as variáveis necessárias, baseando-se no arquivo .env.example.
+  - Testes: O projeto inclui testes unitários e testes end-to-end. Certifique-se de que todos os testes estão passando antes de fazer qualquer modificação significativa.
+  - Os scripts test:e2e e test:e2e:ui executam automaticamente o script dev:test, que inicia o servidor de desenvolvimento do Vite em uma porta específica (50789) e no modo de teste. Isso é feito usando a configuração do Playwright definida no arquivo playwright.config.ts.
