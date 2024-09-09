@@ -29,6 +29,12 @@ export class FetchAllTasksUseCase {
       return null
     }
 
+    if (!taskList.tasks) {
+      return {
+        tasks: [],
+      }
+    }
+
     return {
       tasks: taskList.tasks,
     }

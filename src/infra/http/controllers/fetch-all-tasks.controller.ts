@@ -8,13 +8,13 @@ import { TaskPresenter } from '../presenters/task-presenter'
 
 @Controller('/tasks')
 export class FetchAllTasksController {
-  constructor(private fetchQuestionCommentsUseCase: FetchAllTasksUseCase) {}
+  constructor(private fetchAllTasksUseCase: FetchAllTasksUseCase) {}
 
   @Get()
   async handle(@CurrentUser() user: UserPayload) {
     const userId = user.sub
     try {
-      const { tasks } = await this.fetchQuestionCommentsUseCase.execute({
+      const { tasks } = await this.fetchAllTasksUseCase.execute({
         authorId: userId,
       })
 
