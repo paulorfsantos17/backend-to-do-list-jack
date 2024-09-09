@@ -13,7 +13,7 @@ Este projeto backend faz parte da aplicação **TO-DO-LIST JACK** e foi constru�
 - **[bcryptjs](https://www.npmjs.com/package/bcryptjs):** Biblioteca de hashing utilizada para criptografar senhas.
 - **[Passport](https://www.passportjs.org/):** Middleware para autenticação no Node.js, utilizado com a estratégia JWT.
 
-## Como rodar o Front-end
+## Como rodar o Back-End
  
   1. Clone o repositório:
    ```
@@ -29,18 +29,16 @@ Este projeto backend faz parte da aplicação **TO-DO-LIST JACK** e foi constru�
     pnpm install
   ```
 
-  4. Antes de rodar a aplicação, configure as variáveis de ambiente do .env usando o .env.example como referência.
-
-  5. Crie um banco de dados no docker usando o arquivo docker-compose.yml usando o comando:
+  4. Crie um banco de dados no docker usando o arquivo docker-compose.yml usando o comando:
   ```
     docker compose up -d 
    ``` 
 
-   6. Gere as tabelas do banco de dados usando o comando do prisma: 
+  5. Gere as tabelas do banco de dados usando o comando do prisma: 
    ```
     pnpm prisma migrate dev 
    ``` 
-
+  6. Antes de rodar a aplicação, configure as variáveis de ambiente do .env usando o .env.example como referência.
 
   7. Inicie o servidor de desenvolvimento:
   ```
