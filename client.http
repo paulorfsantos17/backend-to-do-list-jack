@@ -38,3 +38,11 @@ Authorization: Bearer {{authToken}}
   "description": "Question content"
 }
 
+###
+
+# @name get_user
+GET {{baseurl}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+

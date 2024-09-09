@@ -35,7 +35,7 @@ describe('Create Task(e2e)', () => {
     const accessToken = jwt.sign({ sub: user.id })
 
     const response = await request(app.getHttpServer())
-      .post('/task')
+      .post('/tasks')
       .set('Authorization', `Bearer ${accessToken}`)
       .send({
         title: 'Task title.',
@@ -58,7 +58,7 @@ describe('Create Task(e2e)', () => {
     expect(taskOnDatabase).toBeTruthy()
 
     await request(app.getHttpServer())
-      .post('/task')
+      .post('/tasks')
       .set('Authorization', `Bearer ${accessToken}`)
       .send({
         title: 'Task title.',

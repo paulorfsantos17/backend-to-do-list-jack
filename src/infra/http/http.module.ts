@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 
 import { AuthenticatedUserUseCase } from '@/domain/auth/application/use-cases/authenticate-user'
+import { GetUserUseCase } from '@/domain/auth/application/use-cases/get-user'
 import { RegisterUserUseCase } from '@/domain/auth/application/use-cases/register-user'
 import { CompletedTaskUseCase } from '@/domain/manager-tasks/application/use-cases/completed-task'
 import { CreateTaskUseCase } from '@/domain/manager-tasks/application/use-cases/create-task'
@@ -15,6 +16,7 @@ import { CompletedTaskController } from './controllers/completed-task.controller
 import { CreateTaskController } from './controllers/create-tasks.controller'
 import { DeleteTaskController } from './controllers/delete-task.controller'
 import { FetchAllTasksController } from './controllers/fetch-all-tasks.controller'
+import { GetUserController } from './controllers/get-user.controller'
 import { RegisterUserController } from './controllers/register-user.controller'
 import { UpdateTaskController } from './controllers/update-task.controller'
 
@@ -28,6 +30,7 @@ import { UpdateTaskController } from './controllers/update-task.controller'
     UpdateTaskController,
     DeleteTaskController,
     CompletedTaskController,
+    GetUserController,
   ],
   providers: [
     RegisterUserUseCase,
@@ -37,6 +40,7 @@ import { UpdateTaskController } from './controllers/update-task.controller'
     UpdateTaskUseCase,
     DeleteTaskUseCase,
     CompletedTaskUseCase,
+    GetUserUseCase,
   ],
 })
 export class HttpModule {}
