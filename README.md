@@ -84,7 +84,7 @@ Este projeto backend faz parte da aplicação **TO-DO-LIST JACK** e foi constru�
   ```
    pnpm test
   ```
-  - **`test:watch`:**Executa os testes unitários em modo de observação, para que sejam reexecutados a cada alteração no código.
+  - **`test:watch`:** Executa os testes unitários em modo de observação, para que sejam reexecutados a cada alteração no código.
   ```
    pnpm test:watch
   ```
