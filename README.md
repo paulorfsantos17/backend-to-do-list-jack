@@ -34,7 +34,7 @@ Este projeto backend faz parte da aplicação **TO-DO-LIST JACK** e foi constru�
     docker compose up -d 
    ``` 
   5. Antes de rodar a aplicação, configure as variáveis de ambiente do .env usando o .env.example como referência.
-  
+
   6. Gere as tabelas do banco de dados usando o comando do prisma: 
    ```
     pnpm prisma migrate dev 
@@ -43,7 +43,7 @@ Este projeto backend faz parte da aplicação **TO-DO-LIST JACK** e foi constru�
 
   7. Inicie o servidor de desenvolvimento:
   ```
-    pnpm star:dev
+    pnpm start:dev
   ```
 
   ## Explicação dos Scripts
