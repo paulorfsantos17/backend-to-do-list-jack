@@ -13,6 +13,8 @@ import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 
+import { TaskPresenter } from '../presenters/task-presenter'
+
 const createTaskBodySchema = z.object({
   title: z.string(),
   description: z.string(),
@@ -22,7 +24,7 @@ type CreateTaskBodySchema = z.infer<typeof createTaskBodySchema>
 
 const bodyValidationPipe = new ZodValidationPipe(createTaskBodySchema)
 
-@Controller('/task')
+@Controller('/tasks')
 export class CreateTaskController {
   constructor(private createQuestion: CreateTaskUseCase) {}
 
@@ -36,11 +38,13 @@ export class CreateTaskController {
     const userId = user.sub
 
     try {
-      await this.createQuestion.execute({
+      const { task } = await this.createQuestion.execute({
         authorId: userId,
         description,
         title,
       })
+
+      return { task: TaskPresenter.toHTTP(task) }
     } catch (error) {
       console.error(error)
       throw new BadRequestException(error.message)

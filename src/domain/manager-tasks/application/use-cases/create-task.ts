@@ -12,6 +12,10 @@ interface CreateTaskUseCaseProps {
   description: string
 }
 
+interface CreateTaskUseCaseResponse {
+  task: Task
+}
+
 @Injectable()
 export class CreateTaskUseCase {
   constructor(private tasksListRepository: TasksListRepository) {}
@@ -20,7 +24,7 @@ export class CreateTaskUseCase {
     authorId,
     description,
     title,
-  }: CreateTaskUseCaseProps): Promise<void> {
+  }: CreateTaskUseCaseProps): Promise<CreateTaskUseCaseResponse> {
     let taskList = await this.tasksListRepository.findTaskListByAuthor(authorId)
 
     if (!taskList) {
@@ -43,5 +47,7 @@ export class CreateTaskUseCase {
     taskList.addTask(task)
 
     await this.tasksListRepository.update(taskList)
+
+    return { task }
   }
 }
